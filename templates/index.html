@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>페이지 제목</title>
+        <link rel='stylesheet' href="{{ url_for('static', filename='css/style.css')}}">
+    </head>
+    <body>
+        <h1>H1 태그 사용</h1>
+        
+        <form action="/" method="get">
+            <p><label for="keyword1"></label>Keyword1 : <input type="text" name="keyword1" id="keyword1"></p>
+            <p><label for="keyword2"></label>Keyword2 : <input type="text" name="keyword2" id="keyword2"></p>
+            
+            <input type="submit" value="전송하기">
+        </form>
+
+        {% if data %}
+        <div id="reuslt">
+            {% for k, v in data.items() %}<div class="box{{loop.index}}" value="{{v}}">{{k}}</div>{% endfor%}
+        </div>
+        {% endif %}
+
+        <script src="{{url_for('static', filename='js/index.js')}}"></script>
+    </body>
+</html>
